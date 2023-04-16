@@ -1,13 +1,36 @@
-int fibonacci(int n) {
-  if (n == 0 || n == 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
+class Spacecraft {
+  var name;
+  DateTime? launchDate;
+
+  //Read-only non-final property
+  int? get launchYear => launchDate?.year;
+
+  //Constructor, with syntactic sugar for assignment to members.
+  Spacecraft(this.name, this.launchDate) {
+    //Initailization code gose here.
+  }
+
+  //Named constructor that forward to the default one.
+  Spacecraft.unlaunched(var name) : this(name, null);
+
+  //Method.
+  void describe() {
+    print('Spacecraft: $name');
+    //Type promotion doesn't work on getters.
+    var launchDate = this.launchDate;
+    if (launchDate != null) {
+      var years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      print('Launched: $launchYear ($years years ago)');
+    } else {
+      print('unlaunched');
+    }
+  }
 }
 
-void main() {
-  var result = fibonacci(20);
-  print(result);
+void main(){
+  var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
+  voyager.describe();
 
-  var name = 'Voyager I';
-  var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
-  flybyObjects.where((name) => name.contains('turn')).forEach(print);
+  var voyager3 = Spacecraft.unlaunched('Voyager III');
+  voyager3.describe();
 }
