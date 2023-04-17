@@ -33,6 +33,18 @@ class Orbiter extends Spacecraft {
   Orbiter(super.name, DateTime super.launchDate, this.altitude);
 }
 
+mixin Piloted {
+  int astronauts = 1;
+
+  void describeCrew() {
+    print('Number of astronauts: $astronauts');
+  }
+}
+
+class PilotedCraft extends Spacecraft with Piloted {
+  PilotedCraft(super.name, DateTime super.launchDate);
+}
+
 void main() {
   var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
   voyager.describe();
@@ -40,6 +52,10 @@ void main() {
   var voyager3 = Spacecraft.unlaunched('Voyager III');
   voyager3.describe();
 
-  var voyager6 = Orbiter('Voyager IIIIII', DateTime(1977, 9, 6), 10.58);
+  var voyager6 = Orbiter('Voyager VI', DateTime(1978, 9, 5), 10.58);
   voyager6.describe();
+
+  var voyager9 = PilotedCraft('Voyager IX', DateTime(1976, 9, 5));
+  voyager9.describe();
+  voyager9.describeCrew();
 }
