@@ -34,8 +34,6 @@ void main() {
   var vegetables = List.filled(99, 'broccoli');
   assert(vegetables.every((v) => v == 'broccoli'));
 
-
-
   // Use indexOf() to find the index of an object in a list:
 
   var fruits1 = ['apples', 'oranges'];
@@ -46,7 +44,6 @@ void main() {
   // Find an item in a list.
   assert(fruits1.indexOf('apples') == 0);
 
-
   /*
   * Sort a list using the sort() method. You can provide a sorting function that
   * compares two objects. This sorting function must return < 0 for smaller, 0
@@ -54,9 +51,22 @@ void main() {
   * which is defined by Comparable and implemented by String.
   */
 
-  
+  var fruits2 = ['bananas', 'apples', 'oranges'];
 
+  // Sort a list.
+  fruits2.sort((a, b) => a.compareTo(b));
+  assert(fruits2[0] == 'apples');
 
+  /*
+  * Lists are parameterized types (generics), so you can specify the type that
+  * a list should contain:
+  */
+
+  var fruits3 = <String>[];
+
+  fruits3.add('apples');
+  var fruit = fruits3[0];
+  assert(fruit is String);
 
   print('OK.');
 }
