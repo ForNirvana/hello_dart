@@ -65,19 +65,7 @@ void main() {
   assert(hawaiianBeaches.containsKey('Oahu'));
   assert(!hawaiianBeaches.containsKey('Florida'));
 
-  /*
-  * Use the method when you want to assign a value to a key if and only if the
-  * key does not already exist in a map. You must provide a function that
-  * returns the value.putIfAbsent()
-  */
-
-  var teamAssignments = <String, String>{};
-  teamAssignments.putIfAbsent('Catcher', () => pickToughestKid());
-  assert(teamAssignments['Catcher'] != null);  
 
 
   print('OK.');
-  /*
-  * 
-  */
 }
