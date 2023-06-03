@@ -10,4 +10,5 @@ void main() {
   var name = 'Voyager I';
   var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
   flybyObjects.where((name) => name.contains('turn')).forEach(print);
+  assert(name == 'Voyager I');
 }
